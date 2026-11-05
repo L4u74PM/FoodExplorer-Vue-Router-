@@ -1,53 +1,64 @@
 <script setup>
 defineProps({
-  recipe: { type: Object, required: true },
+  recipe: {
+    type: Object,
+    required: true,
+  },
 })
 </script>
 
 <template>
-  <article class="card">
+  <article class="recipe-card">
     <img :src="recipe.image" :alt="recipe.name" />
-    <div class="info">
-      <h3>{{ recipe.name }}</h3>
+    <div class="content">
+      <h2>{{ recipe.name }}</h2>
       <p>{{ recipe.desc }}</p>
-      <RouterLink class="button" :to="`/recipes/${recipe.id}`">Ver receta</RouterLink>
+      <RouterLink :to="{ name: 'recipe-detail', params: { id: recipe.id } }">
+        Veure recepta
+      </RouterLink>
     </div>
   </article>
 </template>
 
 <style scoped>
-.card {
-  overflow: hidden;
-  border-radius: 12px;
+.recipe-card {
   background: #fff;
-  box-shadow: 0 2px 10px rgb(44 90 160 / 12%);
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
 }
 
-img {
+.recipe-card img {
   display: block;
   width: 100%;
-  height: 190px;
+  height: 220px;
   object-fit: cover;
 }
 
-.info {
-  padding: 16px;
+.content {
+  padding: 18px;
 }
 
-h3 {
-  margin: 0 0 8px;
+.content h2 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
 }
 
-p {
+.content p {
   margin: 0 0 16px;
+  color: #4b5563;
+  line-height: 1.5;
 }
 
-.button {
+.content a {
   display: inline-block;
-  border-radius: 6px;
-  padding: 7px 12px;
+  width: fit-content;
+  padding: 12px 20px;
+  border-radius: 999px;
   background: #c65d18;
   color: #fff;
   text-decoration: none;
+  font-weight: 600;
 }
 </style>

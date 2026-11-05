@@ -3,9 +3,15 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
+
   <div class="app-shell">
+
     <header class="site-header">
-      <RouterLink class="brand" to="/">Food Explorer</RouterLink>
+      <div class="brand-group">
+        <img class="nav-image" src="/images/meal.jpg" alt="Mesa llena de comida" />
+        <RouterLink class="brand" to="/">Food Explorer</RouterLink>
+      </div>
+
       <nav aria-label="Navegación principal">
         <RouterLink to="/">Inicio</RouterLink>
         <RouterLink to="/recipes">Recetas</RouterLink>
@@ -34,6 +40,12 @@ import { RouterLink, RouterView } from 'vue-router'
   border-bottom: 1px solid #e5e7eb;
 }
 
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .brand {
   color: #263238;
   font-size: 1.4rem;
@@ -56,5 +68,11 @@ import { RouterLink, RouterView } from 'vue-router'
 
 .site-header nav a.router-link-active {
   color: #c65d18;
+}
+.nav-image {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 </style>
